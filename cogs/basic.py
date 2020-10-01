@@ -77,6 +77,15 @@ class Basic(commands.Cog):
                 'Are you out of your mind?'
             )
         await ctx.send (f'Answer: {random.choice(responses)}')
+    
+    # STRING RANDOMISER COMMAND #
+    #returns the strings in a random order
+    @commands.command(aliases = ['rs'])
+    @commands.has_any_role(*BotUser)
+    async def randomise_strings(ctx, strings : commands.Greedy[str]):
+        random.shuffle(strings)
+        await ctx.send(f"The new order of the strings is:\n\n```\n{'\n'.join(strings)}```")
+
 
     # UPTIME COMMAND #
     #returns uptime of Bot
